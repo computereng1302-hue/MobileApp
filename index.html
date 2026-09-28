@@ -6,7 +6,7 @@
     <title>محاكاة تطبيق حدائق الأسطح - الذكاء الاصطناعي</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons Free CDN -->
+    <!-- FontAwesome Free Icons CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Arabic Font: Cairo -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -141,33 +141,35 @@
                         </button>
                     </div>
 
-                    <!-- Preset Samples for Presentation Demo (Fully Free Icons) -->
+                    <!-- Preset Samples for Presentation Demo -->
                     <div class="bg-slate-100 p-3 rounded-2xl border border-slate-200">
                         <p class="text-xs font-bold text-slate-600 mb-2 flex items-center gap-1">
                             <i class="fa-solid fa-flask text-emerald-600"></i> عينات تجريبية للعرض التقديمي:
                         </p>
                         <div class="grid grid-cols-3 gap-2">
-                            <!-- Dehydration Sample -->
+                            <!-- Dehydration Sample (Water Icon) -->
                             <button onclick="analyzeSample('dehydration')" class="bg-white p-2 rounded-xl text-center border border-slate-200 hover:border-amber-500 transition shadow-2xs">
                                 <div class="w-full h-12 bg-amber-100 text-amber-600 rounded-lg mb-1 flex items-center justify-center text-xl">
-                                    <i class="fa-solid fa-triangle-exclamation"></i>
+                                    <i class="fa-solid fa-droplet"></i>
                                 </div>
                                 <span class="text-[10px] font-bold block text-slate-700">عطش وجفاف</span>
                             </button>
 
-                            <!-- Healthy Sample -->
-                            <button onclick="analyzeSample('healthy')" class="bg-white p-2 rounded-xl text-center border border-slate-200 hover:border-emerald-500 transition shadow-2xs">
-                                <div class="w-full h-12 bg-emerald-100 text-emerald-600 rounded-lg mb-1 flex items-center justify-center text-xl">
-                                    <i class="fa-solid fa-leaf"></i>
-                                </div>
+                            <!-- Healthy Sample (Photo 1) -->
+                            <button onclick="analyzeSample('healthy')" class="bg-white p-2 rounded-xl text-center border border-slate-200 hover:border-emerald-500 transition shadow-2xs overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&w=200&q=80" 
+                                     onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'60\' viewBox=\'0 0 100 60\'><rect width=\'100\' height=\'60\' fill=\'%23dcfce7\'/><text x=\'50%\' y=\'55%\' font-size=\'24\' text-anchor=\'middle\' fill=\'%2316a34a\'>🌿</text></svg>';" 
+                                     class="w-full h-12 object-cover rounded-lg mb-1" 
+                                     alt="نبات سليم">
                                 <span class="text-[10px] font-bold block text-slate-700">نبات سليم</span>
                             </button>
 
-                            <!-- Insect Pest Sample -->
-                            <button onclick="analyzeSample('pest')" class="bg-white p-2 rounded-xl text-center border border-slate-200 hover:border-rose-500 transition shadow-2xs">
-                                <div class="w-full h-12 bg-rose-100 text-rose-600 rounded-lg mb-1 flex items-center justify-center text-xl">
-                                    <i class="fa-solid fa-bug"></i>
-                                </div>
+                            <!-- Insect Pest Sample (Photo 2) -->
+                            <button onclick="analyzeSample('pest')" class="bg-white p-2 rounded-xl text-center border border-slate-200 hover:border-rose-500 transition shadow-2xs overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1592417817098-8f3d6ef23a28?auto=format&fit=crop&w=200&q=80" 
+                                     onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'60\' viewBox=\'0 0 100 60\'><rect width=\'100\' height=\'60\' fill=\'%23ffe4e6\'/><text x=\'50%\' y=\'55%\' font-size=\'24\' text-anchor=\'middle\' fill=\'%23e11d48\'>🐛</text></svg>';" 
+                                     class="w-full h-12 object-cover rounded-lg mb-1" 
+                                     alt="إصابة حشرية">
                                 <span class="text-[10px] font-bold block text-slate-700">إصابة حشرية / آفة</span>
                             </button>
                         </div>
@@ -176,10 +178,10 @@
 
                 <!-- SCREEN 2: SCANNER CAMERA SIMULATION -->
                 <div id="screen-scan" class="hidden h-full flex flex-col bg-slate-900 relative">
-                    <!-- Fake Viewfinder -->
+                    <!-- Viewfinder Frame -->
                     <div class="relative flex-1 flex items-center justify-center overflow-hidden bg-slate-900">
                         <div id="scanner-bg-element" class="w-full h-full flex flex-col items-center justify-center text-emerald-400 gap-3 bg-gradient-to-b from-slate-900 via-emerald-950/50 to-slate-900">
-                            <i id="scanner-icon" class="fa-solid fa-leaf text-7xl animate-pulse"></i>
+                            <i id="scanner-icon" class="fa-solid fa-droplet text-7xl animate-pulse"></i>
                             <span id="scanner-status-text" class="text-xs text-slate-300 font-semibold text-center px-4">جاري تجهيز كاميرا الرؤية الحاسوبية...</span>
                         </div>
 
@@ -188,7 +190,7 @@
                             <span class="text-white/70 text-xs bg-black/60 px-3 py-1 rounded-full backdrop-blur-md">ضع ورقة النبات داخل الإطار</span>
                         </div>
 
-                        <!-- Scanner Line (Active during processing) -->
+                        <!-- Scanner Line -->
                         <div id="scan-line-element" class="scan-line hidden"></div>
                     </div>
 
@@ -211,7 +213,7 @@
                     <!-- AI Status Result Header -->
                     <div id="result-status-card" class="p-4 rounded-2xl bg-amber-50 border border-amber-200 flex items-start gap-3">
                         <div id="result-icon-bg" class="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center text-lg shrink-0">
-                            <i id="result-icon" class="fa-solid fa-triangle-exclamation"></i>
+                            <i id="result-icon" class="fa-solid fa-droplet"></i>
                         </div>
                         <div>
                             <span class="text-[10px] font-bold text-amber-700 bg-amber-200/60 px-2 py-0.5 rounded-full">تشخيص الذكاء الاصطناعي</span>
@@ -327,13 +329,13 @@
 
     <!-- Embedded Interactive Scripting -->
     <script>
-        // Sample state database with 100% Free FontAwesome Icons
+        // Sample state database
         const samples = {
             dehydration: {
                 title: "نقص مياه طفيف (عطش)",
                 subtitle: "رصد الذكاء الاصطناعي جفافاً في أنسجة الورقة بسبب ارتفاع حرارة الجو في القاهرة.",
                 color: "amber",
-                icon: "fa-triangle-exclamation",
+                icon: "fa-droplet",
                 audioText: "تنبيه. النبات يعاني من جفاف طفيف. يرجى إعادة ملء أنبوب ري حوض الويكينج بالماء. لن تحتاجي للري مجدداً قبل 5 إلى 10 أيام."
             },
             healthy: {
