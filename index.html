@@ -19,6 +19,7 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
+            margin: 0;
         }
 
         /* Mobile Phone Container Frame */
@@ -118,7 +119,7 @@
                             <p class="text-xs text-emerald-100 mt-0.5"><i class="fa-solid fa-droplet text-blue-200 ml-1"></i> مستوى الماء بداخل الخزان ممتاز (75%)</p>
                             <div class="mt-3 flex gap-2">
                                 <span class="bg-white/20 backdrop-blur-md text-[11px] px-2.5 py-1 rounded-lg">
-                                    <i class="fa-solid fa-calendar-check text-emerald-200 ml-1"></i> الري القادم: بعد 4 أيام
+                                    <i class="fa-solid fa-calendar-check text-emerald-200 ml-1"></i> الري القادم: بعد 5-10 أيام
                                 </span>
                                 <span class="bg-white/20 backdrop-blur-md text-[11px] px-2.5 py-1 rounded-lg">
                                     <i class="fa-solid fa-coins text-amber-200 ml-1"></i> التكلفة: &lt;500 ج.م
@@ -140,23 +141,34 @@
                         </button>
                     </div>
 
-                    <!-- Preset Samples for Presentation Demo -->
+                    <!-- Preset Samples for Presentation Demo (Fully Offline Icons) -->
                     <div class="bg-slate-100 p-3 rounded-2xl border border-slate-200">
                         <p class="text-xs font-bold text-slate-600 mb-2 flex items-center gap-1">
                             <i class="fa-solid fa-vial text-emerald-600"></i> عينات تجريبية للعرض التقديمي:
                         </p>
                         <div class="grid grid-cols-3 gap-2">
-                            <button onclick="analyzeSample('dehydration')" class="bg-white p-2 rounded-xl text-center border border-slate-200 hover:border-emerald-500 transition shadow-2xs">
-                                <img src="https://images.unsplash.com/photo-1592417817098-8f3d6ef23a28?w=150&auto=format&fit=crop&q=80" class="w-full h-12 object-cover rounded-lg mb-1" alt="جفاف">
+                            <!-- Dehydration Sample -->
+                            <button onclick="analyzeSample('dehydration')" class="bg-white p-2 rounded-xl text-center border border-slate-200 hover:border-amber-500 transition shadow-2xs">
+                                <div class="w-full h-12 bg-amber-100 text-amber-600 rounded-lg mb-1 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-droplet-slash"></i>
+                                </div>
                                 <span class="text-[10px] font-bold block text-slate-700">عطش وجفاف</span>
                             </button>
+
+                            <!-- Healthy Sample -->
                             <button onclick="analyzeSample('healthy')" class="bg-white p-2 rounded-xl text-center border border-slate-200 hover:border-emerald-500 transition shadow-2xs">
-                                <img src="https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e?w=150&auto=format&fit=crop&q=80" class="w-full h-12 object-cover rounded-lg mb-1" alt="سليم">
+                                <div class="w-full h-12 bg-emerald-100 text-emerald-600 rounded-lg mb-1 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-leaf"></i>
+                                </div>
                                 <span class="text-[10px] font-bold block text-slate-700">نبات سليم</span>
                             </button>
-                            <button onclick="analyzeSample('pest')" class="bg-white p-2 rounded-xl text-center border border-slate-200 hover:border-emerald-500 transition shadow-2xs">
-                                <img src="https://images.unsplash.com/photo-1615811361523-6bd03d7748e7?w=150&auto=format&fit=crop&q=80" class="w-full h-12 object-cover rounded-lg mb-1" alt="آفات">
-                                <span class="text-[10px] font-bold block text-slate-700">إصابة بشرية/آفة</span>
+
+                            <!-- Insect Pest Sample -->
+                            <button onclick="analyzeSample('pest')" class="bg-white p-2 rounded-xl text-center border border-slate-200 hover:border-rose-500 transition shadow-2xs">
+                                <div class="w-full h-12 bg-rose-100 text-rose-600 rounded-lg mb-1 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-bug"></i>
+                                </div>
+                                <span class="text-[10px] font-bold block text-slate-700">إصابة حشرية / آفة</span>
                             </button>
                         </div>
                     </div>
@@ -165,15 +177,18 @@
                 <!-- SCREEN 2: SCANNER CAMERA SIMULATION -->
                 <div id="screen-scan" class="hidden h-full flex flex-col bg-slate-900 relative">
                     <!-- Fake Viewfinder -->
-                    <div class="relative flex-1 flex items-center justify-center overflow-hidden">
-                        <img id="scanner-preview-img" src="https://images.unsplash.com/photo-1592417817098-8f3d6ef23a28?w=600&auto=format&fit=crop&q=80" class="w-full h-full object-cover" alt="سكانر">
-                        
-                        <!-- Overlay Frame -->
-                        <div class="absolute inset-8 border-2 border-dashed border-emerald-400/70 rounded-3xl pointer-events-none flex items-center justify-center">
-                            <span class="text-white/70 text-xs bg-black/50 px-3 py-1 rounded-full backdrop-blur-md">ضع ورقة النبات داخل الإطار</span>
+                    <div class="relative flex-1 flex items-center justify-center overflow-hidden bg-slate-900">
+                        <div id="scanner-bg-element" class="w-full h-full flex flex-col items-center justify-center text-emerald-400 gap-3 bg-gradient-to-b from-slate-900 via-emerald-950/50 to-slate-900">
+                            <i id="scanner-icon" class="fa-solid fa-leaf text-7xl animate-pulse"></i>
+                            <span id="scanner-status-text" class="text-xs text-slate-300 font-semibold text-center px-4">جاري تجهيز كاميرا الرؤية الحاسوبية...</span>
                         </div>
 
-                        <!-- Scanner Line (Active when processing) -->
+                        <!-- Overlay Frame -->
+                        <div class="absolute inset-8 border-2 border-dashed border-emerald-400/70 rounded-3xl pointer-events-none flex items-center justify-center">
+                            <span class="text-white/70 text-xs bg-black/60 px-3 py-1 rounded-full backdrop-blur-md">ضع ورقة النبات داخل الإطار</span>
+                        </div>
+
+                        <!-- Scanner Line (Active during processing) -->
                         <div id="scan-line-element" class="scan-line hidden"></div>
                     </div>
 
@@ -201,7 +216,7 @@
                         <div>
                             <span class="text-[10px] font-bold text-amber-700 bg-amber-200/60 px-2 py-0.5 rounded-full">تشخيص الذكاء الاصطناعي</span>
                             <h3 id="result-title" class="font-bold text-slate-800 text-base mt-0.5">نقص مياه طفيف (بداية جفاف)</h3>
-                            <p id="result-subtitle" class="text-xs text-slate-600 mt-1">تم رؤية انكماش في حواف الورقة مع تغير لون النسيج السطحي.</p>
+                            <p id="result-subtitle" class="text-xs text-slate-600 mt-1">تم رصد انكماش في حواف الورقة مع تغير لون النسيج السطحي.</p>
                         </div>
                     </div>
 
@@ -230,7 +245,7 @@
                             <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 font-bold flex items-center justify-center shrink-0">1</div>
                             <div>
                                 <span class="font-bold text-slate-800 block">قم بملء أنبوب الري الخاص بحوض Wicking Bed</span>
-                                <span class="text-slate-500">أضف 2 ليتر من الماء عبر الأنبوب السفلي ولا ترش الأوراق بالماء مباشرة أثناء الظهيرة.</span>
+                                <span class="text-slate-500">أضف الماء عبر الأنبوب السفلي للحفاظ على الخاصية الفتيلية ولا ترش الأوراق بالماء أثناء الظهيرة.</span>
                             </div>
                         </div>
 
@@ -239,7 +254,7 @@
                             <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 font-bold flex items-center justify-center shrink-0">2</div>
                             <div>
                                 <span class="font-bold text-slate-800 block">ميعاد الري القادم</span>
-                                <span class="text-slate-500">الخاصية الفتيلية ستتكفل بترطيب التربة تلقائياً لمدة <b>7 أيام قادمة</b>.</span>
+                                <span class="text-slate-500">سيتولى خزان الحوض تغذية النبات تلقائياً لمدة <b>5 إلى 10 أيام</b> قادمة.</span>
                             </div>
                         </div>
 
@@ -248,7 +263,7 @@
                             <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 font-bold flex items-center justify-center shrink-0">3</div>
                             <div>
                                 <span class="font-bold text-slate-800 block">نصيحة الحرارة (شمس القاهرة)</span>
-                                <span class="text-slate-500">تأكد من وجود طبقة القش/قشور الأرز لحماية التربة من التبخر.</span>
+                                <span class="text-slate-500">تأكد من وجود طبقة قشور الأرز أو الحصى لحماية التربة من التبخر وتقليل الحرارة.</span>
                             </div>
                         </div>
                     </div>
@@ -274,7 +289,7 @@
                         </div>
                         <p class="text-slate-600">نجحت تجربة زراعة الفلفل باستخدام حوض الـ Wicking Reused! انخفضت درجة حرارة السطح بوضوح.</p>
                         <div class="bg-emerald-50 text-emerald-800 p-2 rounded-lg text-[11px] flex justify-between">
-                            <span><i class="fa-solid fa-temperature-arrow-down text-emerald-600"></i> خفض حرارة السطح: -1.5°م</span>
+                            <span><i class="fa-solid fa-temperature-arrow-down text-emerald-600"></i> خفض الحرارة: حتى 1.6°م</span>
                             <span><i class="fa-solid fa-droplet text-blue-500"></i> توفير مياه 70%</span>
                         </div>
                     </div>
@@ -315,23 +330,20 @@
         // Sample state database
         const samples = {
             dehydration: {
-                img: "https://images.unsplash.com/photo-1592417817098-8f3d6ef23a28?w=600&auto=format&fit=crop&q=80",
                 title: "نقص مياه طفيف (عطش)",
                 subtitle: "رصد الذكاء الاصطناعي جفافاً في أنسجة الورقة بسبب ارتفاع حرارة الجو في القاهرة.",
                 color: "amber",
                 icon: "fa-droplet-slash",
-                audioText: "تنبيه. النبات يعاني من جفاف طفيف. يرجى إعادة ملء أنبوب ري حوض الويكينج بـ 2 ليتر من الماء. لن تحتاجي للري مجدداً قبل 7 أيام."
+                audioText: "تنبيه. النبات يعاني من جفاف طفيف. يرجى إعادة ملء أنبوب ري حوض الويكينج بالماء. لن تحتاجي للري مجدداً قبل 5 إلى 10 أيام."
             },
             healthy: {
-                img: "https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e?w=600&auto=format&fit=crop&q=80",
                 title: "النبات ممتاز وبصحة جيدة 100%",
                 subtitle: "نسيج الورقة غني بالكلوروفيل ومستوى الترطيب عبر الخاصية الفتيلية مثالي.",
                 color: "emerald",
-                icon: "fa-circle-check",
+                icon: "fa-leaf",
                 audioText: "ممتاز! النبات بصحة ممتازة ولا يحتاج لأي تدخل حالياً. مستوى المياه في خزان الحوض كافٍ."
             },
             pest: {
-                img: "https://images.unsplash.com/photo-1615811361523-6bd03d7748e7?w=600&auto=format&fit=crop&q=80",
                 title: "رصد إصابة بحشرة المن/آفة",
                 subtitle: "تم العثور على بقع صفراء دقيقة تشير لإصابة حشرية مبكرة.",
                 color: "red",
@@ -350,7 +362,7 @@
 
             document.getElementById(screenId).classList.remove('hidden');
 
-            // Reset Nav styles
+            // Reset Navigation tab styles
             document.querySelectorAll('.nav-btn').forEach(btn => {
                 btn.classList.remove('text-emerald-600');
                 btn.classList.add('text-slate-400');
@@ -363,7 +375,11 @@
 
         function analyzeSample(type) {
             currentActiveSample = samples[type];
-            document.getElementById('scanner-preview-img').src = currentActiveSample.img;
+            
+            // Update scanner view elements dynamically
+            document.getElementById('scanner-icon').className = `fa-solid ${currentActiveSample.icon} text-7xl animate-pulse`;
+            document.getElementById('scanner-status-text').innerText = `جاري تحليل عينة: ${currentActiveSample.title}`;
+
             goToScreen('screen-scan');
             runAiAnalysis();
         }
@@ -372,7 +388,7 @@
             const scanLine = document.getElementById('scan-line-element');
             scanLine.classList.remove('hidden');
 
-            // Simulate AI processing delay
+            // Simulate AI deep learning processing delay
             setTimeout(() => {
                 scanLine.classList.add('hidden');
                 
@@ -384,7 +400,7 @@
                 document.getElementById('result-title').innerText = currentActiveSample.title;
                 document.getElementById('result-subtitle').innerText = currentActiveSample.subtitle;
 
-                // Color themes update
+                // Color themes update based on detection severity
                 if(currentActiveSample.color === 'emerald') {
                     card.className = "p-4 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-start gap-3";
                     iconBg.className = "w-10 h-10 rounded-xl bg-emerald-500 text-white flex items-center justify-center text-lg shrink-0";
@@ -414,8 +430,8 @@
         }
 
         function toggleAudioHelp() {
-            alert("المساعد الصوتي مفعّل: يساعد الكبار وغير الملمين بالقراءة على العناية بالنباتات عبر الإرشادات الصوتية.");
+            alert("المساعد الصوتي مفعّل: يقرأ الإرشادات والتنبيهات بصوت واضح لدعم المستخدمين حديثي العهد بالزراعة والقراءة.");
         }
     </script>
 </body>
-                                  </html>
+</html>
