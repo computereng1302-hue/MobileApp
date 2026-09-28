@@ -6,7 +6,7 @@
     <title>محاكاة تطبيق حدائق الأسطح - الذكاء الاصطناعي</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
+    <!-- FontAwesome Icons Free CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Arabic Font: Cairo -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -141,16 +141,16 @@
                         </button>
                     </div>
 
-                    <!-- Preset Samples for Presentation Demo (Fully Offline Icons) -->
+                    <!-- Preset Samples for Presentation Demo (Fully Free Icons) -->
                     <div class="bg-slate-100 p-3 rounded-2xl border border-slate-200">
                         <p class="text-xs font-bold text-slate-600 mb-2 flex items-center gap-1">
-                            <i class="fa-solid fa-vial text-emerald-600"></i> عينات تجريبية للعرض التقديمي:
+                            <i class="fa-solid fa-flask text-emerald-600"></i> عينات تجريبية للعرض التقديمي:
                         </p>
                         <div class="grid grid-cols-3 gap-2">
                             <!-- Dehydration Sample -->
                             <button onclick="analyzeSample('dehydration')" class="bg-white p-2 rounded-xl text-center border border-slate-200 hover:border-amber-500 transition shadow-2xs">
                                 <div class="w-full h-12 bg-amber-100 text-amber-600 rounded-lg mb-1 flex items-center justify-center text-xl">
-                                    <i class="fa-solid fa-droplet-slash"></i>
+                                    <i class="fa-solid fa-triangle-exclamation"></i>
                                 </div>
                                 <span class="text-[10px] font-bold block text-slate-700">عطش وجفاف</span>
                             </button>
@@ -211,7 +211,7 @@
                     <!-- AI Status Result Header -->
                     <div id="result-status-card" class="p-4 rounded-2xl bg-amber-50 border border-amber-200 flex items-start gap-3">
                         <div id="result-icon-bg" class="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center text-lg shrink-0">
-                            <i id="result-icon" class="fa-solid fa-droplet-slash"></i>
+                            <i id="result-icon" class="fa-solid fa-triangle-exclamation"></i>
                         </div>
                         <div>
                             <span class="text-[10px] font-bold text-amber-700 bg-amber-200/60 px-2 py-0.5 rounded-full">تشخيص الذكاء الاصطناعي</span>
@@ -284,12 +284,12 @@
                     <!-- Community Post 1 -->
                     <div class="bg-white p-3 rounded-xl border border-slate-200 text-xs space-y-2">
                         <div class="flex justify-between items-center">
-                            <span class="font-bold text-slate-800"><i class="fa-solid fa-user-circle text-slate-400 ml-1"></i> حاج أحمد - حي المعادي</span>
+                            <span class="font-bold text-slate-800"><i class="fa-solid fa-circle-user text-slate-400 ml-1"></i> حاج أحمد - حي المعادي</span>
                             <span class="text-[10px] text-slate-400">منذ ساعتين</span>
                         </div>
                         <p class="text-slate-600">نجحت تجربة زراعة الفلفل باستخدام حوض الـ Wicking Reused! انخفضت درجة حرارة السطح بوضوح.</p>
                         <div class="bg-emerald-50 text-emerald-800 p-2 rounded-lg text-[11px] flex justify-between">
-                            <span><i class="fa-solid fa-temperature-arrow-down text-emerald-600"></i> خفض الحرارة: حتى 1.6°م</span>
+                            <span><i class="fa-solid fa-temperature-low text-emerald-600"></i> خفض الحرارة: حتى 1.6°م</span>
                             <span><i class="fa-solid fa-droplet text-blue-500"></i> توفير مياه 70%</span>
                         </div>
                     </div>
@@ -297,7 +297,7 @@
                     <!-- Community Post 2 -->
                     <div class="bg-white p-3 rounded-xl border border-slate-200 text-xs space-y-2">
                         <div class="flex justify-between items-center">
-                            <span class="font-bold text-slate-800"><i class="fa-solid fa-user-circle text-slate-400 ml-1"></i> م. مريم - حلوان</span>
+                            <span class="font-bold text-slate-800"><i class="fa-solid fa-circle-user text-slate-400 ml-1"></i> م. مريم - حلوان</span>
                             <span class="text-[10px] text-slate-400">منذ أمس</span>
                         </div>
                         <p class="text-slate-600">التطبيق نبهني بوجود نقص في النيتروجين بالذكاء الاصطناعي وأضفت السماد العضوي واستعادت الأوراق لونها!</p>
@@ -327,13 +327,13 @@
 
     <!-- Embedded Interactive Scripting -->
     <script>
-        // Sample state database
+        // Sample state database with 100% Free FontAwesome Icons
         const samples = {
             dehydration: {
                 title: "نقص مياه طفيف (عطش)",
                 subtitle: "رصد الذكاء الاصطناعي جفافاً في أنسجة الورقة بسبب ارتفاع حرارة الجو في القاهرة.",
                 color: "amber",
-                icon: "fa-droplet-slash",
+                icon: "fa-triangle-exclamation",
                 audioText: "تنبيه. النبات يعاني من جفاف طفيف. يرجى إعادة ملء أنبوب ري حوض الويكينج بالماء. لن تحتاجي للري مجدداً قبل 5 إلى 10 أيام."
             },
             healthy: {
